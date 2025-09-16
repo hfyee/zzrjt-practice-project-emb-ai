@@ -13,7 +13,7 @@ header = {"grpc-metadata-mm-model-id": "sentiment_aggregated-bert-workflow_lang_
 # Define the first payload with nonsensical text to test the API
 myobj = { "raw_document": { "text": "as987da-6s2d aweadsa" } }  
 # Send a POST request to the API with the first payload and headers
-response = requests.post(url, json = myobj, headers=header)  
+response = requests.post(url, json = myobj, headers=header, timeout=5)  
 # Print the status code of the first response
 print(response.status_code)
 
