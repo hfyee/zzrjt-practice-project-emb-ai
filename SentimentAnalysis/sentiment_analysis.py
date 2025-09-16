@@ -15,10 +15,17 @@ def sentiment_analyzer(text_to_analyse):  # Define a function named sentiment_an
     # Send a POST request to the API with the text and headers
     response = requests.post(url, json = myobj, headers=header)  
   
-    # Parsing the JSON response from the API
+    # Parse the JSON response from the API
     formatted_response = json.loads(response.text)
-    # Extracting sentiment label and score from the response
-    label = formatted_response['documentSentiment']['label']
-    score = formatted_response['documentSentiment']['score']
-    # Returning a dictionary containing sentiment analysis results
+
+    # If the response status code is 200, extract sentiment label and score from the response
+    if response.status_code == 200:
+        label = formatted_response['documentSentiment']['label']
+        score = formatted_response['documentSentiment']['score']
+    # If the response status code is 500, set the label and score to None
+    elif response.status_code == 500:
+        label = None
+        score = None
+    
+    # Return a dictionary containing sentiment analysis results
     return {'label': label, 'score': score}
