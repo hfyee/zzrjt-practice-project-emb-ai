@@ -12,6 +12,9 @@ app = Flask("Sentiment Analyzer")
 
 @app.route("/sentimentAnalyzer")
 def sent_analyzer():
+    """
+    Sends a post request to Watson NLP library and extracts the response.
+    """
     # Retrieve the text to analyze from the request arguments
     text_to_analyze = request.args.get('textToAnalyze')
 
@@ -25,12 +28,15 @@ def sent_analyzer():
     # Check if the label is None, indicating an error or invalid input
     if label is None:
         return "Invalid input! Try again."
-    else:
-        # Return a formatted string with the sentiment label and score
-        return "The given text has been identified as {} with a score of {}.".format(label.split('_')[1], score)
+    # Else, return a formatted string with the sentiment label and score
+    return "The given text has been identified as {} with a score of {}."\
+    .format(label.split('_')[1], score)
 
 @app.route("/")
 def render_index_page():
+    """
+    Runs the render_template function on the HTML template
+    """
     return render_template('index.html')
 
 if __name__ == "__main__":
