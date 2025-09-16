@@ -1,9 +1,10 @@
-# Practice project
-# The functions of Watson AI libraries are deployed on IBM's Cloud IDE server, and cannot be imported here.
-# Test for error handling of invalid entry
-
+"""
+Practice project
+The functions of Watson AI libraries are deployed on IBM's Cloud IDE server, 
+    and cannot be imported here.
+Test for error handling of invalid entry
+"""
 import requests  # Import the requests library to handle HTTP requests
-
 
 # URL of the sentiment analysis service
 url = 'https://sn-watson-sentiment-bert.labs.skills.network/v1/watson.runtime.nlp.v1/NlpService/SentimentPredict'  
